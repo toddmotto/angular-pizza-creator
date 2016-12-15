@@ -1,20 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { PizzaViewerModule } from "./pizza-viewer/pizza-viewer.module";
+import { SummaryModule } from './summary/summary.module';
+import { PizzaCreatorModule } from "./pizza-creator/pizza-creator.module";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
-    HttpModule
+    ReactiveFormsModule,
+    PizzaViewerModule,
+    PizzaCreatorModule,
+    SummaryModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ],
+  declarations: [
+    AppComponent
+  ]
 })
-export class AppModule { }
+export class AppModule {}
