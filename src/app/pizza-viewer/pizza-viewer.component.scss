@@ -36,7 +36,7 @@
   }
 
   &__board {
-    background: url(assets/toppings/board.svg) no-repeat 0 20px;
+    background: url(/assets/toppings/board.svg) no-repeat 0 20px;
     background-size: contain;
     width: 500px;
     height: 342px;
@@ -47,7 +47,7 @@
   }
 
   &__base {
-    background: url(assets/toppings/base.svg) no-repeat;
+    background: url(/assets/toppings/base.svg) no-repeat;
     background-size: contain;
     width: 390px;
     height: 322px;
@@ -72,7 +72,7 @@
     background-size: contain;
 
     &--anchovy {
-      background-image: url(assets/toppings/anchovy.svg);
+      background-image: url(/assets/toppings/anchovy.svg);
       width: 51px;
       height: 37px;
 
@@ -93,7 +93,7 @@
       }
     }
     &--bacon {
-      background-image: url(assets/toppings/bacon.svg);
+      background-image: url(/assets/toppings/bacon.svg);
       width: 56px;
       height: 31px;
 
@@ -119,7 +119,7 @@
       }
     }
     &--basil {
-      background-image: url(assets/toppings/basil.svg);
+      background-image: url(/assets/toppings/basil.svg);
       width: 46px;
       height: 32px;
 
@@ -140,7 +140,7 @@
       }
     }
     &--chili {
-      background-image: url(assets/toppings/chili.svg);
+      background-image: url(/assets/toppings/chili.svg);
       width: 63px;
       height: 35px;
 
@@ -166,7 +166,7 @@
       }
     }
     &--mozzarella {
-      background-image: url(assets/toppings/mozzarella.svg);
+      background-image: url(/assets/toppings/mozzarella.svg);
       width: 46px;
       height: 32px;
 
@@ -187,7 +187,7 @@
       }
     }
     &--mushroom {
-      background-image: url(assets/toppings/mushroom.svg);
+      background-image: url(/assets/toppings/mushroom.svg);
       width: 45px;
       height: 26px;
 
@@ -213,7 +213,7 @@
       }
     }
     &--olive {
-      background-image: url(assets/toppings/olive.svg);
+      background-image: url(/assets/toppings/olive.svg);
       width: 45px;
       height: 26px;
 
@@ -238,7 +238,7 @@
       }
     }
     &--onion {
-      background-image: url(assets/toppings/onion.svg);
+      background-image: url(/assets/toppings/onion.svg);
       width: 57px;
       height: 36px;
 
@@ -263,7 +263,7 @@
       }
     }
     &--pepper {
-      background-image: url(assets/toppings/pepper.svg);
+      background-image: url(/assets/toppings/pepper.svg);
       width: 57px;
       height: 36px;
 
@@ -289,7 +289,7 @@
       }
     }
     &--pepperoni {
-      background-image: url(assets/toppings/pepperoni.svg);
+      background-image: url(/assets/toppings/pepperoni.svg);
       width: 57px;
       height: 36px;
 
@@ -315,7 +315,7 @@
       }
     }
     &--sweetcorn {
-      background-image: url(assets/toppings/sweetcorn.svg);
+      background-image: url(/assets/toppings/sweetcorn.svg);
       width: 57px;
       height: 36px;
 
@@ -336,7 +336,7 @@
       }
     }
     &--tomato {
-      background-image: url(assets/toppings/tomato.svg);
+      background-image: url(/assets/toppings/tomato.svg);
       width: 57px;
       height: 36px;
 
