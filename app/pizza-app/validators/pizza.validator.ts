@@ -1,7 +1,7 @@
 import { AbstractControl } from '@angular/forms';
 
 export class PizzaValidators {
-  static checkEmailExists(control: AbstractControl) {
+  static checkEmailsMatch(control: AbstractControl) {
     const email = control.get('email');
     const confirm = control.get('confirm');
     if (!(email && confirm)) return null;
