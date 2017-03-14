@@ -17,6 +17,8 @@ export interface PizzaOrder {
       </pizza-viewer>
       <pizza-form
         [parent]="form"
+        (add)="addPizza()"
+        (remove)="removePizza()"
         (active)="updatePizza($event)"
         (submit)="createOrder($event)">
       </pizza-form>
@@ -40,6 +42,21 @@ export class PizzaAppComponent {
   });
 
   constructor(private fb: FormBuilder) {}
+
+  createPizza() {
+    return this.fb.group({
+      size: ['small', Validators.required],
+      toppings: [[]]
+    });
+  }
+
+  addPizza() {
+    this.form.pizzas.push(this.createPizza());
+  }
+
+  removePizza(index) {
+    this.form.pizzas.removeAt(index);
+  }
 
   updatePizza(index: number) {
     this.activePizza = index;

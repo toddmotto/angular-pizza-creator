@@ -18,6 +18,13 @@ const TOPPINGS: string[] = [
 
 @Component({
   selector: 'pizza-toppings',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PizzaToppingsComponent),
+      multi: true
+    }
+  ],
   styleUrls: ['./pizza-toppings.component.scss'],
   template: `
     <div class="pizza-toppings">
@@ -35,17 +42,10 @@ const TOPPINGS: string[] = [
           (focus)="onFocus(topping)"
           [checked]="value.includes(topping)">
         <span class="pizza-topping__icon pizza-topping__icon--{{ topping }}"></span>
-        {{ capitalise(topping) }}
+        {{ topping | titlecase }}
       </label>
     </div>
-  `,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PizzaToppingsComponent),
-      multi: true
-    }
-  ]
+  `
 })
 export class PizzaToppingsComponent implements ControlValueAccessor {
   public toppings: string[] = TOPPINGS;
@@ -65,10 +65,6 @@ export class PizzaToppingsComponent implements ControlValueAccessor {
 
   public writeValue(toppings: string[]) {
     this.value = toppings;
-  }
-
-  private capitalise(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   private updateTopping(topping: string) {

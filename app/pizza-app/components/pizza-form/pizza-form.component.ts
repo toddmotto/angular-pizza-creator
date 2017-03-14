@@ -86,9 +86,11 @@ import { FormGroup } from "@angular/forms";
           <input formControlName="phone" type="text" placeholder="01234 567 890">
         </div>
       </div>
+
       <pizza-creator 
-        formArrayName="pizzas"
         [pizzas]="parent.get('pizzas')"
+        (add)="onAddPizza($event)"
+        (remove)="onRemovePizza($event)"
         (toggle)="onToggle($event)">
       </pizza-creator>
 
@@ -109,8 +111,19 @@ export class PizzaFormComponent {
   @Output()
   active = new EventEmitter<any>();
 
+  @Output()
+  add = new EventEmitter<any>();
+
   onSubmit() {
     this.submit.emit(this.parent);
+  }
+
+  onAddPizza(event) {
+    this.add.emit(event);
+  }
+
+  onAddPizza(event) {
+    this.remove.emit(event);
   }
 
   onToggle(event) {

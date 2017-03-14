@@ -43,7 +43,7 @@ interface Pizza {
           class="pizza-summary__pizza">
         <div *ngIf="pizza.size">
           <h3>
-            {{ capitalise(pizza.size) }} Pizza
+            {{ pizza.size | titlecase }} Pizza
 
             <span class="pizza-summary__price">
               £{{ prices[pizza.size].base }}
@@ -53,8 +53,7 @@ interface Pizza {
           <div class="pizza-summary__toppings">
             <div *ngFor="let topping of pizza.toppings"
                 class="pizza-summary__topping">
-              <i class="fa fa-plus"></i> {{ capitalise(topping) }}
-
+              <i class="fa fa-plus"></i> {{ topping | titlecase }}
               <span class="pizza-summary__price">
                 {{ prices[pizza.size].toppings }}
               </span>
@@ -77,10 +76,6 @@ export class PizzaSummaryComponent {
   @Input()
   private order: FormGroup;
   private prices: Prices = SIZE_PRICES;
-
-  private capitalise(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
 
   private getPrice(): string {
     let price: number = 0;

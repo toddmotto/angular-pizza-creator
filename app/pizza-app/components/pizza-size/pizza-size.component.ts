@@ -34,7 +34,7 @@ export const PIZZA_SIZE_ACCESSOR = {
             <div class="pizza-size__pizza__line"></div>
           </div>
         </div>
-        {{ capitalise(size) }} ({{ inches[i] }}")
+        {{ size | titlecase }} ({{ inches[i] }}")
       </label>
     </div>
   `
@@ -57,10 +57,6 @@ export class PizzaSizeComponent implements ControlValueAccessor {
 
   public writeValue(value: string) {
     this.value = value;
-  }
-
-  private capitalise(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   private onChange(value: string) {
