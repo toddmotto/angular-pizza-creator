@@ -40,33 +40,33 @@ interface Pizza {
     <div class="pizza-summary">
       <h2>Order Summary</h2>
       <div *ngFor="let pizza of order.value.pizzas"
-          class="summary__pizza">
+          class="pizza-summary__pizza">
         <div *ngIf="pizza.size">
           <h3>
             {{ capitalise(pizza.size) }} Pizza
 
-            <span class="summary__price">
+            <span class="pizza-summary__price">
               £{{ prices[pizza.size].base }}
             </span>
           </h3>
 
-          <div class="summary__toppings">
+          <div class="pizza-summary__toppings">
             <div *ngFor="let topping of pizza.toppings"
-                class="summary__topping">
+                class="pizza-summary__topping">
               <i class="fa fa-plus"></i> {{ capitalise(topping) }}
 
-              <span class="summary__price">
+              <span class="pizza-summary__price">
                 {{ prices[pizza.size].toppings }}
               </span>
             </div>
           </div>
         </div>
       </div>
-      <div class="summary__total-price">
+      <div class="pizza-summary__total-price">
         £{{ getPrice() }}
       </div>
 
-      <button type="submit" class="summary__button" [disabled]="order.invalid">
+      <button type="submit" class="pizza-summary__button" [disabled]="order.invalid">
         Place order
       </button>
     </div>

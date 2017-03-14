@@ -48,7 +48,7 @@ import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class PizzaCreatorComponent implements OnInit {
   @Input() pizzas: FormArray;
   @Output() toggle: EventEmitter<number> = new EventEmitter<number>();
-  
+
   private _openPizza: number = 0;
 
   constructor(private formBuilder: FormBuilder) {}

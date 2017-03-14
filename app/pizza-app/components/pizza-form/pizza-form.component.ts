@@ -102,15 +102,15 @@ import { FormGroup } from "@angular/forms";
 export class PizzaFormComponent {
   @Input()
   parent: FormGroup;
-  
+
   @Output()
   submit = new EventEmitter<any>();
 
   @Output()
   active = new EventEmitter<any>();
-  
+
   onSubmit() {
-    this.active.emit(this.parent);
+    this.submit.emit(this.parent);
   }
 
   onToggle(event) {

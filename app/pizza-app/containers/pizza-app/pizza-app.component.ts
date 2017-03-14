@@ -38,7 +38,7 @@ export class PizzaAppComponent {
     }, { validator: PizzaValidators.checkEmailExists }),
     pizzas: this.fb.array([])
   });
-  
+
   constructor(private fb: FormBuilder) {}
 
   updatePizza(index: number) {
