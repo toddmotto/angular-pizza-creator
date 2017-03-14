@@ -2,7 +2,15 @@
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 20px;
-
+  .button {
+    background: none;
+    cursor: pointer;
+    color: #97C747;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    outline: none;
+  }
   &__header {
     font-size: 16px;
     padding: 10px 15px;

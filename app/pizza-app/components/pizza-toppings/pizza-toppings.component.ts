@@ -1,30 +1,15 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-const TOPPINGS: string[] = [
-  'anchovy',
-  'bacon',
-  'basil',
-  'chili',
-  'mozzarella',
-  'mushroom',
-  'olive',
-  'onion',
-  'pepper',
-  'pepperoni',
-  'sweetcorn',
-  'tomato'
-];
+const PIZZA_TOPPINGS_ACCESSOR = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => PizzaToppingsComponent),
+  multi: true
+};
 
 @Component({
   selector: 'pizza-toppings',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PizzaToppingsComponent),
-      multi: true
-    }
-  ],
+  providers: [PIZZA_TOPPINGS_ACCESSOR],
   styleUrls: ['./pizza-toppings.component.scss'],
   template: `
     <div class="pizza-toppings">
@@ -48,27 +33,32 @@ const TOPPINGS: string[] = [
   `
 })
 export class PizzaToppingsComponent implements ControlValueAccessor {
-  public toppings: string[] = TOPPINGS;
+  
+  toppings = [
+    'anchovy', 'bacon', 'basil', 'chili', 'mozzarella', 'mushroom',
+    'olive', 'onion', 'pepper', 'pepperoni', 'sweetcorn', 'tomato'
+  ];
 
-  private onModelChange: Function;
+  value: string[] = [];
+  focused: string;
+
   private onTouch: Function;
-  private value: string[] = [];
-  private focused: string;
+  private onModelChange: Function;
 
-  public registerOnChange(fn: Function) {
+  registerOnChange(fn) {
     this.onModelChange = fn;
   }
 
-  public registerOnTouched(fn: Function) {
+  registerOnTouched(fn) {
     this.onTouch = fn;
   }
 
-  public writeValue(toppings: string[]) {
-    this.value = toppings;
+  writeValue(value) {
+    this.value = value;
   }
 
-  private updateTopping(topping: string) {
-    if (this.value['includes'](topping)) {
+  updateTopping(topping: string) {
+    if (this.value.includes(topping)) {
       this.value = this.value.filter((x: string) => topping !== x);
     } else {
       this.value = this.value.concat([topping]);
@@ -76,11 +66,11 @@ export class PizzaToppingsComponent implements ControlValueAccessor {
     this.onModelChange(this.value);
   }
 
-  private onBlur(value: string) {
+  onBlur(value: string) {
     this.focused = '';
   }
 
-  private onFocus(value: string) {
+  onFocus(value: string) {
     this.focused = value;
     this.onTouch();
   }

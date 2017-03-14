@@ -11,7 +11,7 @@ import { FormArray } from '@angular/forms';
         Choose your pizzas
         <button class="button" type="button" (click)="addPizza()">
           <i class="fa fa-plus"></i>
-          Add another pizza
+          Add pizza
         </button>
       </h2>
 
@@ -52,6 +52,7 @@ import { FormArray } from '@angular/forms';
           <pizza-toppings 
             formControlName="toppings">
           </pizza-toppings>
+
         </div>
 
       </div>
@@ -60,7 +61,7 @@ import { FormArray } from '@angular/forms';
 })
 export class PizzaCreatorComponent {
 
-  _openPizza: number = 0;
+  private visiblePizza: number = 0;
 
   @Input()
   pizzas: FormArray;
@@ -75,12 +76,12 @@ export class PizzaCreatorComponent {
   toggle = new EventEmitter<number>();
 
   get openPizza() {
-    return this._openPizza;
+    return this.visiblePizza;
   }
 
   set openPizza(index: number) {
-    this._openPizza = index;
-    if (index > -1) {
+    this.visiblePizza = index;
+    if (~index) {
       this.toggle.emit(index);
     }
   }

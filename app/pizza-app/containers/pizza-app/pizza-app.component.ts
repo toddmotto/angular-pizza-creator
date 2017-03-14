@@ -11,17 +11,20 @@ export interface PizzaOrder {
   styleUrls: ['./pizza-app.component.scss'],
   template: `
     <div class="pizza-app">
+
       <pizza-viewer 
         [pizzas]="form.get('pizzas')"
         [activePizza]="activePizza">
       </pizza-viewer>
+
       <pizza-form
         [parent]="form"
         (add)="addPizza()"
-        (remove)="removePizza()"
-        (active)="updatePizza($event)"
+        (remove)="removePizza($event)"
+        (toggle)="togglePizza($event)"
         (submit)="createOrder($event)">
       </pizza-form>
+
     </div>
   `
 })
@@ -57,17 +60,17 @@ export class PizzaAppComponent {
     control.push(this.createPizza());
   }
 
-  removePizza(index) {
+  removePizza(index: number) {
     const control = this.form.get('pizzas') as FormArray;
     control.removeAt(index);
   }
 
-  updatePizza(index: number) {
+  togglePizza(index: number) {
     this.activePizza = index;
   }
 
-  createOrder(order: any) {
-    console.log(order);
+  createOrder(order: FormGroup) {
+    console.log(order.value);
   }
 
 }

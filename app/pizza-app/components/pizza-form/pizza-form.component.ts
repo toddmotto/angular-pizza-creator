@@ -5,7 +5,7 @@ import { FormGroup } from "@angular/forms";
   selector: 'pizza-form',
   styleUrls: ['./pizza-form.component.scss'],
   template: `
-    <form (ngSubmit)="onSubmit()" [formGroup]="parent">
+    <form (ngSubmit)="onSubmit($event)" [formGroup]="parent">
       <h2>Enter your details</h2>
       <div class="section" formGroupName="details">
         <div class="input">
@@ -106,20 +106,16 @@ export class PizzaFormComponent {
   parent: FormGroup;
 
   @Output()
-  submit = new EventEmitter<any>();
-
-  @Output()
-  active = new EventEmitter<any>();
-
-  @Output()
   add = new EventEmitter<any>();
 
   @Output()
   remove = new EventEmitter<any>();
 
-  onSubmit() {
-    this.submit.emit(this.parent);
-  }
+  @Output()
+  toggle = new EventEmitter<number>();
+
+  @Output()
+  submit = new EventEmitter<any>();
 
   onAddPizza(event) {
     this.add.emit(event);
@@ -130,7 +126,12 @@ export class PizzaFormComponent {
   }
 
   onToggle(event) {
-    this.active.emit(event);
+    this.toggle.emit(event);
+  }
+
+  onSubmit(event) {
+    event.stopPropagation();
+    this.submit.emit(this.parent);
   }
 
 }
