@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'pizza-summary',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['pizza-summary.component.scss'],
   template: `
     <div class="pizza-summary">
@@ -11,7 +12,7 @@ import { FormGroup } from '@angular/forms';
       <h2>Order Summary</h2>
       <div 
         class="pizza-summary__pizza"
-        *ngFor="let pizza of parent.value.pizzas">
+        *ngFor="let pizza of parent.get('pizzas').value">
 
         <div *ngIf="pizza.size">
           <h3>

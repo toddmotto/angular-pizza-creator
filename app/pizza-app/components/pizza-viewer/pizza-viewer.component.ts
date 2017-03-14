@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { transition, style, animate, trigger } from '@angular/animations';
-import { FormArray } from "@angular/forms";
+import { FormArray } from '@angular/forms';
 
 export const DROP_ANIMATION = trigger('drop', [
   transition(':enter', [

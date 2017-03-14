@@ -1,17 +1,19 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'pizza-form',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['pizza-form.component.scss'],
   template: `
     <form (ngSubmit)="onSubmit($event)" [formGroup]="parent">
+    
       <h2>Enter your details</h2>
       <div class="section" formGroupName="details">
         <div class="input">
           <label>
             Name <span class="required">*</span>
-            <span *ngIf="parent.get('details').get('name').errors && parent.get('details').get('name').touched"
+            <span *ngIf="parent.get('details').get('name').hasError('required') && parent.get('details').get('name').touched"
                   class="error">
               Field is required
             </span>
@@ -94,7 +96,11 @@ import { FormGroup } from "@angular/forms";
         (toggle)="onToggle($event)">
       </pizza-creator>
 
-      <ng-content select="pizza-summary"></ng-content>
+      <pizza-summary 
+        [parent]="parent"
+        [prices]="prices"
+        [total]="total">
+      </pizza-summary>
 
     </form>
   `
@@ -103,6 +109,12 @@ export class PizzaFormComponent {
   
   @Input()
   parent: FormGroup;
+
+  @Input()
+  total: string;
+
+  @Input()
+  prices: any;
 
   @Output()
   add = new EventEmitter<any>();

@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'pizza-creator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['pizza-creator.component.scss'],
   template: `
     <div class="pizza-creator">

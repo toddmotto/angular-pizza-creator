@@ -15,60 +15,66 @@ export const PIZZA_SIZE_ACCESSOR = {
     <div class="pizza-size section">
       <label *ngFor="let size of sizes; let i = index;"
           class="pizza-size__item"
-          [class.pizza-size__item--active]="value === size"
-          [class.pizza-size__item--focused]="focused === size">
+          [class.pizza-size__item--active]="value === size.type"
+          [class.pizza-size__item--focused]="focused === size.type">
         <input 
           type="radio"
           name="size"
-          [attr.value]="size"
-          (blur)="onBlur(size)"
-          (change)="onChange(size)"
-          (focus)="onFocus(size)"
-          [checked]="value === size">
+          [attr.value]="size.type"
+          (blur)="onBlur(size.type)"
+          (change)="onChange(size.type)"
+          (focus)="onFocus(size.type)"
+          [checked]="value === size.type">
 
         <div class="pizza-size__plate">
-          <div class="pizza-size__pizza pizza-size__pizza--{{ size }}">
+          <div class="pizza-size__pizza pizza-size__pizza--{{ size.type }}">
             <div class="pizza-size__pizza__line"></div>
             <div class="pizza-size__pizza__line"></div>
             <div class="pizza-size__pizza__line"></div>
             <div class="pizza-size__pizza__line"></div>
           </div>
         </div>
-        {{ size | titlecase }} ({{ inches[i] }}")
+        {{ size.type | titlecase }} ({{ size.inches }}")
       </label>
     </div>
   `
 })
 export class PizzaSizeComponent implements ControlValueAccessor {
+  
   private onModelChange: Function;
   private onTouch: Function;
-  private value: string;
-  private focused: string;
-  private sizes: string[] = ['large', 'medium', 'small'];
-  private inches: number[] = [13, 11, 9];
+  
+  value: string;
+  focused: string;
+  
+  sizes: any[] = [
+    { type: 'large', inches: 13 },
+    { type: 'medium', inches: 11 },
+    { type: 'small', inches: 9 }
+  ];
 
-  public registerOnChange(fn: Function) {
+  registerOnChange(fn: Function) {
     this.onModelChange = fn;
   }
 
-  public registerOnTouched(fn: Function) {
+  registerOnTouched(fn: Function) {
     this.onTouch = fn;
   }
 
-  public writeValue(value: string) {
+  writeValue(value: string) {
     this.value = value;
   }
 
-  private onChange(value: string) {
+  onChange(value: string) {
     this.value = value;
     this.onModelChange(value);
   }
 
-  private onBlur(value: string) {
+  onBlur(value: string) {
     this.focused = '';
   }
 
-  private onFocus(value: string) {
+  onFocus(value: string) {
     this.focused = value;
     this.onTouch();
   }

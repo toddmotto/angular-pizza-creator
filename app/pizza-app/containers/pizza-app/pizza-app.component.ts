@@ -15,17 +15,12 @@ import { PizzaValidators } from '../../validators/pizza.validator';
 
       <pizza-form
         [parent]="form"
+        [total]="total"
+        [prices]="prices"
         (add)="addPizza()"
         (remove)="removePizza($event)"
         (toggle)="togglePizza($event)"
         (submit)="createOrder($event)">
-
-        <pizza-summary 
-          [parent]="form"
-          [prices]="prices"
-          [total]="total">
-        </pizza-summary>
-        
       </pizza-form>
 
     </div>
