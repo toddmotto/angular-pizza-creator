@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'pizza-creator',
@@ -58,7 +58,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
     </div>
   `
 })
-export class PizzaCreatorComponent implements OnInit {
+export class PizzaCreatorComponent {
+
+  _openPizza: number = 0;
 
   @Input()
   pizzas: FormArray;
@@ -72,15 +74,6 @@ export class PizzaCreatorComponent implements OnInit {
   @Output()
   toggle = new EventEmitter<number>();
 
-  private _openPizza: number = 0;
-
-  constructor(private formBuilder: FormBuilder) {}
-
-  addPizza() {
-    this.add.emit();
-    this.openPizza = this.pizzas.length - 1;
-  }
-
   get openPizza() {
     return this._openPizza;
   }
@@ -90,6 +83,11 @@ export class PizzaCreatorComponent implements OnInit {
     if (index > -1) {
       this.toggle.emit(index);
     }
+  }
+
+  addPizza() {
+    this.add.emit();
+    this.openPizza = this.pizzas.length - 1;
   }
 
   removePizza(index: number) {

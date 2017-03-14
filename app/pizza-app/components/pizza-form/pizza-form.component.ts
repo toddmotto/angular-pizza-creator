@@ -114,6 +114,9 @@ export class PizzaFormComponent {
   @Output()
   add = new EventEmitter<any>();
 
+  @Output()
+  remove = new EventEmitter<any>();
+
   onSubmit() {
     this.submit.emit(this.parent);
   }
@@ -122,7 +125,7 @@ export class PizzaFormComponent {
     this.add.emit(event);
   }
 
-  onAddPizza(event) {
+  onRemovePizza(event) {
     this.remove.emit(event);
   }
 

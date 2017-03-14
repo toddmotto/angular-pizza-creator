@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { PizzaValidators } from '../../validators/pizza.validator';
 
 export interface PizzaOrder {
@@ -38,7 +38,9 @@ export class PizzaAppComponent {
       address: ['', [Validators.required, Validators.minLength(3)]],
       postcode: ['', [Validators.required, Validators.minLength(3)]]
     }, { validator: PizzaValidators.checkEmailExists }),
-    pizzas: this.fb.array([])
+    pizzas: this.fb.array([
+      this.createPizza()
+    ])
   });
 
   constructor(private fb: FormBuilder) {}
@@ -51,11 +53,13 @@ export class PizzaAppComponent {
   }
 
   addPizza() {
-    this.form.pizzas.push(this.createPizza());
+    const control = this.form.get('pizzas') as FormArray;
+    control.push(this.createPizza());
   }
 
   removePizza(index) {
-    this.form.pizzas.removeAt(index);
+    const control = this.form.get('pizzas') as FormArray;
+    control.removeAt(index);
   }
 
   updatePizza(index: number) {
