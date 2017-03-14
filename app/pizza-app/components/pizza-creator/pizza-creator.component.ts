@@ -93,6 +93,7 @@ export class PizzaCreatorComponent {
 
   removePizza(index: number) {
     this.remove.emit(index);
+    this.openPizza = this.pizzas.length - 1;
   }
   
   togglePizza(index: number) {

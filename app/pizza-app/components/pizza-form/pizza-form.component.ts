@@ -94,11 +94,7 @@ import { FormGroup } from "@angular/forms";
         (toggle)="onToggle($event)">
       </pizza-creator>
 
-      <pizza-summary 
-        [parent]="parent"
-        [prices]="prices"
-        [total]="total">
-      </pizza-summary>
+      <ng-content select="pizza-summary"></ng-content>
 
     </form>
   `
@@ -107,12 +103,6 @@ export class PizzaFormComponent {
   
   @Input()
   parent: FormGroup;
-
-  @Input()
-  total: string;
-
-  @Input()
-  prices: any;
 
   @Output()
   add = new EventEmitter<any>();

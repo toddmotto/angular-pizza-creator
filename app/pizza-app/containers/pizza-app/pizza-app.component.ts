@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { PizzaValidators } from '../../validators/pizza.validator';
 
-export interface PizzaOrder {
-  size: 'large' | 'medium' | 'small';
-}
-
 @Component({
   selector: 'pizza-app',
   styleUrls: ['pizza-app.component.scss'],
@@ -19,12 +15,17 @@ export interface PizzaOrder {
 
       <pizza-form
         [parent]="form"
-        [total]="total"
-        [prices]="prices"
         (add)="addPizza()"
         (remove)="removePizza($event)"
         (toggle)="togglePizza($event)"
         (submit)="createOrder($event)">
+
+        <pizza-summary 
+          [parent]="form"
+          [prices]="prices"
+          [total]="total">
+        </pizza-summary>
+        
       </pizza-form>
 
     </div>

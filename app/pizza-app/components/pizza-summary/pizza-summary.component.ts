@@ -35,7 +35,7 @@ import { FormGroup } from '@angular/forms';
         </div>
       </div>
       <div class="pizza-summary__total-price">
-        {{ total | currency:'USD':true }}
+        Total: {{ total | currency:'USD':true }}
       </div>
 
       <button 
