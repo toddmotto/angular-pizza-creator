@@ -11,7 +11,7 @@ import { FormGroup } from "@angular/forms";
         <div class="input">
           <label>
             Name <span class="required">*</span>
-            <span *ngIf="form.get('details').get('name').errors && form.get('details').get('name').touched"
+            <span *ngIf="parent.get('details').get('name').errors && parent.get('details').get('name').touched"
                   class="error">
               Field is required
             </span>
@@ -21,7 +21,7 @@ import { FormGroup } from "@angular/forms";
         <div class="input">
           <label>
             Email <span class="required">*</span>
-            <span *ngIf="form.get('details').get('email').errors && form.get('details').get('email').touched"
+            <span *ngIf="parent.get('details').get('email').errors && parent.get('details').get('email').touched"
                   class="error">
               Field is required
             </span>
@@ -31,13 +31,13 @@ import { FormGroup } from "@angular/forms";
         <div class="input">
           <label>
             Confirm email <span class="required">*</span>
-            <span *ngIf="form.get('details').get('confirm').errors && form.get('details').get('confirm').touched"
+            <span *ngIf="parent.get('details').get('confirm').errors && parent.get('details').get('confirm').touched"
                   class="error">
-              <span *ngIf="form.get('details').get('confirm').hasError('required')">
+              <span *ngIf="parent.get('details').get('confirm').hasError('required')">
                 Field is required
               </span>
             </span>
-            <span class="error" *ngIf="!form.get('details').get('confirm').hasError('required') && form.get('details').touched && form.get('details').hasError('nomatch')">
+            <span class="error" *ngIf="!parent.get('details').get('confirm').hasError('required') && parent.get('details').touched && parent.get('details').hasError('nomatch')">
               Emails must match
             </span>
           </label>
@@ -48,12 +48,12 @@ import { FormGroup } from "@angular/forms";
         <div class="input">
           <label>
             Address <span class="required">*</span>
-            <span *ngIf="form.get('details').get('address').errors && form.get('details').get('address').touched"
+            <span *ngIf="parent.get('details').get('address').errors && parent.get('details').get('address').touched"
                   class="error">
-              <span *ngIf="form.get('details').get('address').hasError('required')">
+              <span *ngIf="parent.get('details').get('address').hasError('required')">
                 Field is required
               </span>
-              <span *ngIf="form.get('details').get('address').hasError('minlength')">
+              <span *ngIf="parent.get('details').get('address').hasError('minlength')">
                 Min of 3 characters
               </span>
             </span>
@@ -63,12 +63,12 @@ import { FormGroup } from "@angular/forms";
         <div class="input">
           <label>
             Post Code <span class="required">*</span>
-            <span *ngIf="form.get('details').get('postcode').errors && form.get('details').get('postcode').touched"
+            <span *ngIf="parent.get('details').get('postcode').errors && parent.get('details').get('postcode').touched"
                   class="error">
-              <span *ngIf="form.get('details').get('postcode').hasError('required')">
+              <span *ngIf="parent.get('details').get('postcode').hasError('required')">
                 Field is required
               </span>
-              <span *ngIf="form.get('details').get('postcode').hasError('minlength')">
+              <span *ngIf="parent.get('details').get('postcode').hasError('minlength')">
                 Min of 3 characters
               </span>
             </span>
@@ -78,7 +78,7 @@ import { FormGroup } from "@angular/forms";
         <div class="input">
           <label>
             Contact Number <span class="required">*</span>
-            <span *ngIf="form.get('details').get('phone').errors && form.get('details').get('phone').touched"
+            <span *ngIf="parent.get('details').get('phone').errors && parent.get('details').get('phone').touched"
                   class="error">
               Field is required
             </span>
@@ -88,13 +88,14 @@ import { FormGroup } from "@angular/forms";
       </div>
       <pizza-creator 
         formArrayName="pizzas"
-        [pizzas]="form.get('pizzas')"
-        (toggle)="updateActivePizza($event)">
+        [pizzas]="parent.get('pizzas')"
+        (toggle)="onToggle($event)">
       </pizza-creator>
 
-      <h2>Order Summary</h2>
+      <pizza-summary 
+        [order]="parent">
+      </pizza-summary>
 
-      <pizza-summary [order]="form"></pizza-summary>
     </form>
   `
 })
@@ -102,11 +103,18 @@ export class PizzaFormComponent {
   @Input()
   parent: FormGroup;
   
-  @Input()
-  activePizza: number;
-  
   @Output()
   submit = new EventEmitter<any>();
+
+  @Output()
+  active = new EventEmitter<any>();
   
-  onSubmit() {}
+  onSubmit() {
+    this.active.emit(this.parent);
+  }
+
+  onToggle(event) {
+    this.active.emit(event);
+  }
+
 }

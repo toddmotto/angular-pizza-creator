@@ -38,6 +38,7 @@ interface Pizza {
   styleUrls: ['./pizza-summary.component.scss'],
   template: `
     <div class="pizza-summary">
+      <h2>Order Summary</h2>
       <div *ngFor="let pizza of order.value.pizzas"
           class="summary__pizza">
         <div *ngIf="pizza.size">

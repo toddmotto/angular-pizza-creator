@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { emailMatcher } from '../../../validators/email-matcher';
+import { emailMatcher } from '../../validators/email-matcher';
 
 export interface PizzaOrder {
   size: 'large' | 'medium' | 'small';
@@ -8,6 +8,7 @@ export interface PizzaOrder {
 
 @Component({
   selector: 'pizza-app',
+  styleUrls: ['./pizza-app.component.scss'],
   template: `
     <div class="pizza-app">
       <pizza-viewer 
@@ -15,7 +16,8 @@ export interface PizzaOrder {
         [activePizza]="activePizza">
       </pizza-viewer>
       <pizza-form
-        [parent]="form">
+        [parent]="form"
+        (active)="updatePizza($event)">
       </pizza-form>
     </div>
   `
