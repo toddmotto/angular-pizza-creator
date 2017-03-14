@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { emailMatcher } from '../../validators/email-matcher';
+import { PizzaValidators } from '../../validators/pizza.validator';
 
 export interface PizzaOrder {
   size: 'large' | 'medium' | 'small';
@@ -17,7 +17,8 @@ export interface PizzaOrder {
       </pizza-viewer>
       <pizza-form
         [parent]="form"
-        (active)="updatePizza($event)">
+        (active)="updatePizza($event)"
+        (submit)="createOrder($event)">
       </pizza-form>
     </div>
   `
@@ -34,7 +35,7 @@ export class PizzaAppComponent {
       phone: ['', Validators.required],
       address: ['', [Validators.required, Validators.minLength(3)]],
       postcode: ['', [Validators.required, Validators.minLength(3)]]
-    }, { validator: emailMatcher }),
+    }, { validator: PizzaValidators.checkEmailExists }),
     pizzas: this.fb.array([])
   });
   
@@ -42,6 +43,10 @@ export class PizzaAppComponent {
 
   updatePizza(index: number) {
     this.activePizza = index;
+  }
+
+  createOrder(order: any) {
+    console.log(order);
   }
 
 }
