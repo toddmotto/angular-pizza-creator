@@ -8,7 +8,7 @@ export interface PizzaOrder {
 
 @Component({
   selector: 'pizza-app',
-  styleUrls: ['./pizza-app.component.scss'],
+  styleUrls: ['pizza-app.component.scss'],
   template: `
     <div class="pizza-app">
 

@@ -3,7 +3,7 @@ import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'pizza-creator',
-  styleUrls: ['./pizza-creator.component.scss'],
+  styleUrls: ['pizza-creator.component.scss'],
   template: `
     <div class="pizza-creator">
 

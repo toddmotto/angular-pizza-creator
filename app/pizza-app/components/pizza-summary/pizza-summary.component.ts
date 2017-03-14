@@ -35,7 +35,7 @@ interface Pizza {
 
 @Component({
   selector: 'pizza-summary',
-  styleUrls: ['./pizza-summary.component.scss'],
+  styleUrls: ['pizza-summary.component.scss'],
   template: `
     <div class="pizza-summary">
       <h2>Order Summary</h2>

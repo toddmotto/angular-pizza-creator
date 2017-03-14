@@ -3,7 +3,7 @@ import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'pizza-form',
-  styleUrls: ['./pizza-form.component.scss'],
+  styleUrls: ['pizza-form.component.scss'],
   template: `
     <form (ngSubmit)="onSubmit($event)" [formGroup]="parent">
       <h2>Enter your details</h2>
@@ -26,11 +26,11 @@ import { FormGroup } from "@angular/forms";
               Field is required
             </span>
           </label>
-          <input formControlName="email" type="email" placeholder="john@hungry.me">
+          <input formControlName="email" type="email" placeholder="Enter your email">
         </div>
         <div class="input">
           <label>
-            Confirm email <span class="required">*</span>
+            Confirm <span class="required">*</span>
             <span *ngIf="parent.get('details').get('confirm').errors && parent.get('details').get('confirm').touched"
                   class="error">
               <span *ngIf="parent.get('details').get('confirm').hasError('required')">
@@ -41,7 +41,7 @@ import { FormGroup } from "@angular/forms";
               Emails must match
             </span>
           </label>
-          <input formControlName="confirm" type="email" placeholder="Confirm email">
+          <input formControlName="confirm" type="email" placeholder="Confirm your email">
         </div>
       </div>
       <div class="section" formGroupName="details">
@@ -62,7 +62,7 @@ import { FormGroup } from "@angular/forms";
         </div>
         <div class="input">
           <label>
-            Post Code <span class="required">*</span>
+            Postcode <span class="required">*</span>
             <span *ngIf="parent.get('details').get('postcode').errors && parent.get('details').get('postcode').touched"
                   class="error">
               <span *ngIf="parent.get('details').get('postcode').hasError('required')">

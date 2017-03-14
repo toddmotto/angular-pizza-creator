@@ -16,7 +16,7 @@ export const DROP_ANIMATION = trigger('drop', [
 @Component({
   selector: 'pizza-viewer',
   animations: [DROP_ANIMATION],
-  styleUrls: ['./pizza-viewer.component.scss'],
+  styleUrls: ['pizza-viewer.component.scss'],
   template: `
     <div class="pizza-viewer">
       <div class="pizza-viewer__table-side"></div>

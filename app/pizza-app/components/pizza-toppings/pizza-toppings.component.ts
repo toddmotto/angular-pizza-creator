@@ -10,7 +10,7 @@ const PIZZA_TOPPINGS_ACCESSOR = {
 @Component({
   selector: 'pizza-toppings',
   providers: [PIZZA_TOPPINGS_ACCESSOR],
-  styleUrls: ['./pizza-toppings.component.scss'],
+  styleUrls: ['pizza-toppings.component.scss'],
   template: `
     <div class="pizza-toppings">
       <label 

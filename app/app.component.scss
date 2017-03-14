@@ -13,22 +13,6 @@
   overflow: hidden;
 }
 
-.form {
-  flex-grow: 1;
-  display: flex;
-}
-
-.order {
-  background: #fff;
-  position: relative;
-  z-index: 2;
-  flex-grow: 1;
-  margin-left: 20px;
-  box-shadow: 0 1px 54px rgba(0, 0, 0, 0.27);
-  padding: 20px 30px;
-  overflow-y: scroll;
-}
-
 :host /deep/ h2 {
   color: #6E7790;
   font-size: 22px;
@@ -48,11 +32,6 @@
   display: flex;
 }
 
-.required, .error {
-  color: #E01D3B;
-  font-weight: 700;
-}
-
 .input {
   margin: 0 30px 20px 0;
   flex-grow: 1;
@@ -66,7 +45,6 @@
     color: rgba(0, 0, 0, 0.6);
     display: block;
     margin-bottom: 10px;
-
     .error {
       float: right;
     }

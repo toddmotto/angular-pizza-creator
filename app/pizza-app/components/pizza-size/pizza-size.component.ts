@@ -10,7 +10,7 @@ export const PIZZA_SIZE_ACCESSOR = {
 @Component({
   selector: 'pizza-size',
   providers: [PIZZA_SIZE_ACCESSOR],
-  styleUrls: ['./pizza-size.component.scss'],
+  styleUrls: ['pizza-size.component.scss'],
   template: `
     <div class="pizza-size section">
       <label *ngFor="let size of sizes; let i = index;"

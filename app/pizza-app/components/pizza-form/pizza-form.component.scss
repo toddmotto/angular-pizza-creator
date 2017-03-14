@@ -10,6 +10,12 @@
   height: 100%;
 }
 
+.required,
+.error {
+  color: #E01D3B;
+  font-weight: 700;
+}
+
 .input {
   margin: 0 30px 20px 0;
   flex-grow: 1;
