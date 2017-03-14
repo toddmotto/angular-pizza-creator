@@ -1,0 +1,59 @@
+.pizza-summary {
+  color: rgba(0, 0, 0, 0.6);
+  &__pizza {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    h3 {
+      font-size: 22px;
+      font-weight: 300;
+      margin: 0;
+      position: relative;
+    }
+  }
+
+  &__price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__topping {
+    position: relative;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-left: 10px;
+    .fa {
+      margin-right: 10px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+
+  &__total-price {
+    text-align: right;
+  }
+
+  &__button {
+    width: 100%;
+    background: #98C550;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: inherit;
+
+    &:disabled {
+      background: rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.4);
+      cursor: not-allowed;
+    }
+  }
+}
