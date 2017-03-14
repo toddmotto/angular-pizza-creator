@@ -1,35 +1,31 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Project
+.idea
 
-# compiled output
-/dist
-/tmp
+# Node
+node_modules
 
-# dependencies
-/node_modules
-/bower_components
-
-# IDEs and editors
-/.idea
-/.vscode
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage/*
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
-
-#System Files
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+## Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Package Managers
+yarn-error.log
+npm-debug.log
+
+# Build
+build
+vendor/*-manifest.json
+
+# Docs
+gh-pages

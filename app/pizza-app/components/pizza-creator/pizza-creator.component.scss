@@ -1,0 +1,73 @@
+.pizza-creator {
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  .button {
+    background: none;
+    cursor: pointer;
+    color: #97C747;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    outline: none;
+  }
+  &__header {
+    font-size: 16px;
+    padding: 10px 15px;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__icon {
+    font-size: 14px;
+    margin-right: 10px;
+    position: relative;
+    top: -2px;
+  }
+
+  &__status {
+    font-size: 14px;
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+
+    &.fa-check {
+      color: #98C550;
+    }
+    &.fa-times {
+      color: #E31736;
+    }
+  }
+
+  &__delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 9px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #E31736;
+    font-size: 14px;
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &__content {
+    display: none;
+    padding: 10px 15px;
+
+    &--open {
+      display: block;
+    }
+  }
+
+  h3 {
+    color: #6E7790;
+    font-size: 16px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+}

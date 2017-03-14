@@ -1,43 +1,60 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/0.13/config/configuration-file.html
+const path = require('path');
+const webpack = require('webpack');
 
-module.exports = function (config) {
+module.exports = (config) => {
   config.set({
-    basePath: '',
-    frameworks: ['jasmine', 'angular-cli'],
-    plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-remap-istanbul'),
-      require('angular-cli/plugins/karma')
-    ],
-    files: [
-      { pattern: './src/test.ts', watched: false }
-    ],
-    preprocessors: {
-      './src/test.ts': ['angular-cli']
-    },
-    mime: {
-      'text/x-typescript': ['ts','tsx']
-    },
-    remapIstanbulReporter: {
-      reports: {
-        html: 'coverage',
-        lcovonly: './coverage/coverage.lcov'
-      }
-    },
-    angularCli: {
-      config: './angular-cli.json',
-      environment: 'dev'
-    },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['progress', 'karma-remap-istanbul']
-              : ['progress'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    files: [
+      'build/*.js',
+      { pattern:'build/*.js.map', included: false },
+      'node_modules/reflect-metadata/temp/Reflect.js',
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/proxy.js',
+      'node_modules/zone.js/dist/sync-test.js',
+      'node_modules/zone.js/dist/async-test.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      { pattern: '**/*.spec.ts', watched: false }
+    ],
+    frameworks: ['jasmine'],
+    mime: { 'text/x-typescript': ['ts'] },
+    preprocessors: {
+      '*.js': ['sourcemap'],
+      '**/*.spec.ts': ['sourcemap', 'webpack']
+    },
+    reporters: ['spec'],
+    webpack: {
+      devtool: 'sourcemap',
+      module: {
+        rules: [
+          {
+            test: /\.html$/,
+            loaders: ['raw-loader']
+          },
+          {
+            test: /\.scss$/,
+            loaders: ['raw-loader', 'sass-loader']
+          },
+          {
+            test: /\.ts$/,
+            loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+          }
+        ]
+      },
+      plugins: [
+        new webpack.NamedModulesPlugin(),
+        new webpack.DllReferencePlugin({
+          context: './',
+          manifest: require(path.resolve(__dirname, 'vendor/testing-manifest.json'))
+        }),
+        new webpack.SourceMapDevToolPlugin({
+          filename: null,
+          test: /\.(ts|js)($|\?)/i
+        })
+      ],
+      resolve: {
+        extensions: ['.ts', '.js']
+      }
+    }
   });
 };

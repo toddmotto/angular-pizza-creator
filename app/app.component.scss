@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+.app {
+  width: 100%;
+  font-size: 24px;
+  background: #fff;
+  height: 100%;
+  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.8), 0 40px 20px -20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  overflow: hidden;
+}
+
+:host /deep/ h2 {
+  color: #6E7790;
+  font-size: 22px;
+  position: relative;
+  margin-bottom: 20px;
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px 0;
+    font-size: 14px;
+  }
+}
+
+:host /deep/ .section {
+  margin: 10px 0;
+  display: flex;
+}
+
+.input {
+  margin: 0 30px 20px 0;
+  flex-grow: 1;
+  &:last-child {
+    margin-right: 0;
+  }
+  label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.6);
+    display: block;
+    margin-bottom: 10px;
+    .error {
+      float: right;
+    }
+  }
+  input {
+    background: #fff;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.02);
+    border-radius: 2px;
+    border: 1px solid #d7d7e7;
+    font-size: 18px;
+    padding: 10px 15px;
+    outline: none;
+    font-family: inherit;
+    color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
