@@ -5,12 +5,11 @@
 
 .pizza-size {
   &__item {
-    margin: 0 30px 20px;
-    border-radius: 3px;
+    margin: 0 0 20px;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
-    flex-grow: 1;
+    flex: 0 0 33%;
     height: 80px;
     position: relative;
     padding: 29px 0 0 100px;

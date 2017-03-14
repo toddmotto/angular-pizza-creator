@@ -61,15 +61,15 @@ module.exports = {
   devServer: {
     contentBase: __dirname,
     stats: {
-      chunks: true,
-      chunkModules: true,
-      chunkOrigins: true,
-      errors: true,
-      errorDetails: true,
-      hash: true,
-      timings: true,
-      modules: true,
-      warnings: true
+      chunks: false,
+      chunkModules: false,
+      chunkOrigins: false,
+      errors: false,
+      errorDetails: false,
+      hash: false,
+      timings: false,
+      modules: false,
+      warnings: false
     },
     setup: function (app) {
       app.get('/build/vendor.js', function (req, res) {
