@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { PizzaValidators } from '../../validators/pizza.validator';
 
@@ -19,6 +19,8 @@ export interface PizzaOrder {
 
       <pizza-form
         [parent]="form"
+        [total]="total"
+        [prices]="prices"
         (add)="addPizza()"
         (remove)="removePizza($event)"
         (toggle)="togglePizza($event)"
@@ -28,9 +30,16 @@ export interface PizzaOrder {
     </div>
   `
 })
-export class PizzaAppComponent {
+export class PizzaAppComponent implements OnInit {
 
   activePizza = 0;
+  total = '0';
+
+  prices = {
+    small: { base: 9.99, toppings: 0.69 },
+    medium: { base: 12.99, toppings: 0.99 },
+    large: { base: 16.99, toppings: 1.29 }
+  };
 
   form = this.fb.group({
     details: this.fb.group({
@@ -47,6 +56,13 @@ export class PizzaAppComponent {
   });
 
   constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.calculateTotal(this.form.get('pizzas').value);
+    this.form.get('pizzas')
+      .valueChanges
+      .subscribe(value => this.calculateTotal(value));
+  }
 
   createPizza() {
     return this.fb.group({
@@ -67,6 +83,14 @@ export class PizzaAppComponent {
 
   togglePizza(index: number) {
     this.activePizza = index;
+  }
+
+  calculateTotal(value) {
+    const price = value.reduce((prev: number, next: any) => {
+      const price = this.prices[next.size];
+      return prev + price.base + (price.toppings * next.toppings.length);
+    }, 0);
+    this.total = price.toFixed(2);
   }
 
   createOrder(order: FormGroup) {

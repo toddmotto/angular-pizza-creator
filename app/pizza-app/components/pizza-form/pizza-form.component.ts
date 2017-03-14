@@ -95,15 +95,24 @@ import { FormGroup } from "@angular/forms";
       </pizza-creator>
 
       <pizza-summary 
-        [order]="parent">
+        [parent]="parent"
+        [prices]="prices"
+        [total]="total">
       </pizza-summary>
 
     </form>
   `
 })
 export class PizzaFormComponent {
+  
   @Input()
   parent: FormGroup;
+
+  @Input()
+  total: string;
+
+  @Input()
+  prices: any;
 
   @Output()
   add = new EventEmitter<any>();
