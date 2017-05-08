@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@angular/animations@4.0.0-rc.3":
+  version "4.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.0.0-rc.3.tgz#e294cbc6b3a9404811377c537aad478ad953b7b8"
+
 "@angular/common@4.0.0-rc.3":
   version "4.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.0.0-rc.3.tgz#315d12daf02d0fb12d9cab937d28986ad26559f3"
