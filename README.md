@@ -1,6 +1,8 @@
 # Angular Pizza Creator
 
-<a href="https://ultimateangular.com" target="_blank"><img src="https://toddmotto.com/img/ua.png"></a>
+<div align="center">
+<a href="https://ultimatecourses.com/courses/angular" target="_blank"><img width="100%" src="https://ultimatecourses.com/static/banners/ultimate-angular-github.svg"></a>
+</div>
 
 > Check out the [live demo](https://toddmotto.com/angular-pizza-creator/)
 
