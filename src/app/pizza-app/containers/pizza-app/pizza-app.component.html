@@ -1,0 +1,15 @@
+<div class="pizza-app">
+  <pizza-viewer [pizzas]="form.get('pizzas')" [activePizza]="activePizza">
+  </pizza-viewer>
+
+  <pizza-form
+    [parent]="form"
+    [total]="total"
+    [prices]="prices"
+    (add)="addPizza()"
+    (remove)="removePizza($event)"
+    (toggle)="togglePizza($event)"
+    (submit)="createOrder($event)"
+  >
+  </pizza-form>
+</div>

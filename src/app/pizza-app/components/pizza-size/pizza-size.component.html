@@ -1,0 +1,28 @@
+<div class="pizza-size section">
+  <label
+    *ngFor="let size of sizes; let i = index"
+    class="pizza-size__item"
+    [class.pizza-size__item--active]="value === size.type"
+    [class.pizza-size__item--focused]="focused === size.type"
+  >
+    <input
+      type="radio"
+      name="size"
+      [attr.value]="size.type"
+      (blur)="onBlur(size.type)"
+      (change)="onChange(size.type)"
+      (focus)="onFocus(size.type)"
+      [checked]="value === size.type"
+    />
+
+    <div class="pizza-size__plate">
+      <div class="pizza-size__pizza pizza-size__pizza--{{ size.type }}">
+        <div class="pizza-size__pizza__line"></div>
+        <div class="pizza-size__pizza__line"></div>
+        <div class="pizza-size__pizza__line"></div>
+        <div class="pizza-size__pizza__line"></div>
+      </div>
+    </div>
+    {{ size.type | titlecase }} ({{ size.inches }}")
+  </label>
+</div>

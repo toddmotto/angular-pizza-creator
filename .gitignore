@@ -1,31 +1,46 @@
-# Project
-.idea
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Node
-node_modules
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
 
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.Spotlight-V100
-.Trashes
+# dependencies
+/node_modules
 
-## Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
 
-# Package Managers
-yarn-error.log
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
-# Build
-build
-vendor/*-manifest.json
-
-# Docs
-gh-pages
+# System Files
+.DS_Store
+Thumbs.db
